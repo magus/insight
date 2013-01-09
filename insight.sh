@@ -10,7 +10,8 @@ function e_arrow()    { echo -e " \033[1;33m ➜\033[0m  $@"; }
 
 LOGIN_LOG="/var/log/secure.log";
 
-INSIGHT_DIR="$HOME/.insight";
+#INSIGHT_DIR="$HOME/.insight";
+INSIGHT_DIR="/Users/noah/.insight";
 INSIGHT_SAW="$INSIGHT_DIR/saw";
 LOGIN_ATTEMPT_PATT='Got user';
 OLD_LOG="$INSIGHT_DIR/secure.log.old";
@@ -35,7 +36,7 @@ function insight() {
     e_arrow 'Login attempt found!'
     e_arrow "$loginAttempts"
     [[ -d "$INSIGHT_SAW" ]] || mkdir -p $INSIGHT_SAW
-    imagesnap -q "$INSIGHT_SAW/insight-$(date "+%Y_%m_%d-%H_%M_%S")" &
+    sudo /usr/libexec/isightcapture -t jpg "$INSIGHT_SAW/insight-$(date "+%Y_%m_%d-%H_%M_%S")" > /dev/null &
     e_arrow 'Insight saw and captured.'
   fi
 }

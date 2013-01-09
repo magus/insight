@@ -6,16 +6,9 @@
     <string>com.iamnoah.insight</string>
     <key>ProgramArguments</key>
     <array>
-        <string>/usr/local/bin/insight</string>
+        <string>/usr/local/bin/insight.sh</string>
     </array>
     <key>StartInterval</key>
     <integer>1</integer>
-
-    <key>StandardOutPath</key>
-    <string>/var/log/insight.log</string>
-    <key>StandardErrorPath</key>
-    <string>/var/log/insight.log</string>
-    <key>Debug</key>
-    <true/>
 </dict>
 </plist>
