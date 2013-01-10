@@ -33,7 +33,7 @@ function insight() {
     log 'Login attempt found!'
     log "$loginAttempts"
     [[ -d "$INSIGHT_SAW" ]] || mkdir -p $INSIGHT_SAW
-    /usr/libexec/isightcapture -t jpg "$INSIGHT_SAW/$(date "+%Y_%m_%d-%H_%M_%S")"
+    /usr/libexec/isightcapture -t jpg "$INSIGHT_SAW/$(date "+%Y_%m_%d-%H_%M_%S").jpg"
     log 'Insight saw and captured.'
   fi
 }
