@@ -4,11 +4,20 @@
 <dict>
     <key>Label</key>
     <string>com.iamnoah.insight</string>
+    <key>UserName</key>
+    <string>{{user}}</string>
     <key>ProgramArguments</key>
     <array>
         <string>/usr/local/bin/insight.sh</string>
     </array>
     <key>StartInterval</key>
     <integer>1</integer>
+
+    <key>StandardOutPath</key>
+    <string>/Users/{{user}}/.insight/log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/{{user}}/.insight/log</string>
+    <key>Debug</key>
+    <true/>
 </dict>
 </plist>
