@@ -6,6 +6,7 @@
 function log()   { echo -e "$(date '+%Y-%m-%d %H:%M:%S')  $@"; }
 
 LOGIN_LOG="/var/log/secure.log";
+RUNTIME_SECONDS=30;
 
 #INSIGHT_DIR="$HOME/.insight";
 INSIGHT_DIR="/Users/{{user}}/.insight";
@@ -38,4 +39,13 @@ function insight() {
   fi
 }
 
-insight
+#run for 30 seconds, polling every second
+start=$(date +%s)
+prev=
+
+until (( $(date +%s) >= $start + $RUNTIME_SECONDS )); do
+    new=$(stat -f %m $LOGIN_LOG)
+    [[ $prev != $new ]] && insight
+    prev=$new
+    sleep 1
+done
