@@ -8,8 +8,8 @@ function log()   { echo -e "$(date '+%Y-%m-%d %H:%M:%S')  $@"; }
 LOGIN_LOG="/var/log/secure.log";
 RUNTIME_SECONDS=30;
 
-#INSIGHT_DIR="$HOME/.insight";
-INSIGHT_DIR="/Users/{{user}}/.insight";
+#INSIGHT_DIR="$HOME/insight";
+INSIGHT_DIR="/Users/{{user}}/insight";
 INSIGHT_SAW="$INSIGHT_DIR/saw";
 LOGIN_ATTEMPT_PATT='Got user';
 OLD_LOG="$INSIGHT_DIR/secure.log.old";
