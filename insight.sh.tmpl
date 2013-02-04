@@ -5,15 +5,14 @@
 
 function log()   { echo -e "$(date '+%Y-%m-%d %H:%M:%S')  $@"; }
 
-LOGIN_LOG="/var/log/secure.log";
+LOGIN_LOG="{{authLog}}";
 RUNTIME_SECONDS=30;
 
-#INSIGHT_DIR="$HOME/insight";
-INSIGHT_DIR="/Users/{{user}}/insight";
+INSIGHT_DIR="{{insightPath}}";
 INSIGHT_SAW="$INSIGHT_DIR/saw";
 LOGIN_ATTEMPT_PATT='Got user';
-OLD_LOG="$INSIGHT_DIR/secure.log.old";
-CUR_LOG="$INSIGHT_DIR/secure.log.cur";
+OLD_LOG="{{logs}}/auth.log.old";
+CUR_LOG="{{logs}}/auth.log.cur";
 
 # diff log from last run and determine if there were login attempts
 function insight() {
@@ -34,8 +33,9 @@ function insight() {
     log 'Login attempt found!'
     log "$loginAttempts"
     [[ -d "$INSIGHT_SAW" ]] || mkdir -p $INSIGHT_SAW
-    /usr/local/bin/imagesnap "$INSIGHT_SAW/$(date "+%Y_%m_%d-%H_%M_%S").jpg"
-    log 'Insight saw and captured.'
+    {{bin}}/imagesnap "$INSIGHT_SAW/$(date "+%Y_%m_%d-%H_%M_%S").jpg"
+    {{bin}}/onInsight
+    log 'Insight saw and executed.'
   fi
 }
 
