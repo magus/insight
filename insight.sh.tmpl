@@ -3,7 +3,7 @@
 # insight.sh
 # periodically check for login attempts and catch 'em
 
-function log()   { echo -e "$(date '+%Y-%m-%d %H:%M:%S')  $@"; }
+function log()  { echo -e "$(date '+%Y-%m-%d %H:%M:%S')  $@"; }
 
 LOGIN_LOG="{{authLog}}";
 RUNTIME_SECONDS=30;
@@ -34,8 +34,8 @@ function insight() {
     log 'Login attempt found!'
     log "$loginAttempts"
     [[ -d "$INSIGHT_SAW" ]] || mkdir -p $INSIGHT_SAW
-    {{bin}}/imagesnap "$INSIGHT_SAW/$(date "+%Y_%m_%d-%H_%M_%S").jpg"
-    {{bin}}/onInsight
+    {{bin}}/imagesnap "$INSIGHT_SAW/$(date "+%Y_%m_%d-%H_%M_%S").jpg" &
+    {{bin}}/onInsight &
     log 'Insight saw and executed.'
   fi
 }
