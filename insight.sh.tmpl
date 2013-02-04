@@ -10,16 +10,17 @@ RUNTIME_SECONDS=30;
 
 INSIGHT_DIR="{{insightPath}}";
 INSIGHT_SAW="$INSIGHT_DIR/saw";
+INSIGHT_LOGS="{{logs}}";
 LOGIN_ATTEMPT_PATT='Got user';
-OLD_LOG="{{logs}}/auth.log.old";
-CUR_LOG="{{logs}}/auth.log.cur";
+OLD_LOG="$INSIGHT_LOGS/auth.log.old";
+CUR_LOG="$INSIGHT_LOGS/auth.log.cur";
 
 # diff log from last run and determine if there were login attempts
 function insight() {
   local loginAttempts 
   #create insight dir and initial log
-  if [[ ! -d "$INSIGHT_DIR" ]]; then
-    mkdir $INSIGHT_DIR
+  if [[ ! -e "$CUR_LOG" ]]; then
+    mkdir -p $INSIGHT_LOGS
     cp $LOGIN_LOG $CUR_LOG
   fi
 
