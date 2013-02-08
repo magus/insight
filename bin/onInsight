@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# runs every time a login attempt is made
-# use this as a hook to run other tasks for each insight
-say "Insight'd"
+## runs every time a login attempt is made
+## use this as a hook to run other tasks for each insight
+
+# say "Insight'd"
 
