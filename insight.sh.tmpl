@@ -19,14 +19,14 @@ CUR_LOG="$INSIGHT_LOGS/auth.log.cur";
 # be insightful
 function insightful() {
   [[ -d "$INSIGHT_SAW" ]] || mkdir -p $INSIGHT_SAW
-  {{bin}}/imagesnap "$INSIGHT_SAW/$(date "+%Y_%m_%d-%H_%M_%S").jpg" &
+  {{bin}}/imagesnap -w 1.5 "$INSIGHT_SAW/$(date "+%Y_%m_%d-%H_%M_%S").jpg" &
   {{bin}}/onInsight &
   log 'Insight saw and executed.'
 }
 
 # diff log from last run and determine if there were login attempts
 function insight() {
-  local loginAttempts 
+  local loginAttempts
   #create insight dir and initial log
   if [[ ! -e "$CUR_LOG" ]]; then
     mkdir -p $INSIGHT_LOGS
@@ -42,12 +42,12 @@ function insight() {
   wakes="$(diff $CUR_LOG $OLD_LOG | grep "$WAKE_PATT")"
   if [[ "$loginAttempts" ]]; then
     log 'Login attempt found!'
-    log "$loginAttempts" 
+    log "$loginAttempts"
     insightful
   fi
   if [[ "$wakes" ]]; then
     log 'Wakeup found!'
-    log "$wakes" 
+    log "$wakes"
     insightful
   fi
 }
