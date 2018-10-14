@@ -1,5 +1,5 @@
 # [insight](http://iamnoah.com/insight)
-![OS X](http://mac.github.com/images/apple.png)
+
 > catch every login moment
 
 Insight is a small script that takes a snapshot each time it detects a wake or login attempt
